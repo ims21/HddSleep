@@ -23,7 +23,7 @@ def HddSleepMain(session, **kwargs):
 	session.open(ui.HddSleep, plugin_path)
 
 def Plugins(path,**kwargs):
-    	global plugin_path
-    	plugin_path = path
+	global plugin_path
+	plugin_path = path
 	result = [PluginDescriptor(name="HddSleep",description = _("HDD sleeptime settings"),where = PluginDescriptor.WHERE_PLUGINMENU,icon = 'plugin.png',fnc = HddSleepMain)]
 	return result
