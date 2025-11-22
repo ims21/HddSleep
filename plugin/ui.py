@@ -121,7 +121,7 @@ class HddSleep(ConfigListScreen,Screen,HelpableScreen):
 		self.epgpath = None
 		try:    #some images does not using this value
 			self.epgpath = config.misc.epgcache_filename
-		except Exception, e:
+		except Exception as e:
 			print "your image does not using epg path"
 
 		self.devInfo = []
@@ -271,7 +271,7 @@ class HddSleep(ConfigListScreen,Screen,HelpableScreen):
 		model = "/sys/block/%s/device/model" % (dev)
 		vendor = "/sys/block/%s/device/vendor" % (dev)
 		try: return self.readFile(vendor) + " " + self.readFile(model)
-		except Exception, e:
+		except Exception as e:
 			return ""
 
 	def getDeviceType(self, dev):
@@ -283,7 +283,7 @@ class HddSleep(ConfigListScreen,Screen,HelpableScreen):
 	def removableDevice(self,dev):
 		removable = "/sys/block/%s/removable" % (dev)
 		try: return self.readFile(removable)
-		except Exception, e:
+		except Exception as e:
 			return "-1"
 
 	def getMount(self):
@@ -320,7 +320,7 @@ class HddSleep(ConfigListScreen,Screen,HelpableScreen):
 					return 0
 				else:
 					return 1
-		except Exception, e:
+		except Exception as e:
 			print "[hddsleep] isRunning FAIL:", e
 			return 0
 
@@ -342,7 +342,7 @@ class HddSleep(ConfigListScreen,Screen,HelpableScreen):
 			fd = open(LINK,"r")
 			fd.close()
 			return 1
-		except Exception, e:
+		except Exception as e:
 			return 0
 
 	def info(self, text = ""):
@@ -414,6 +414,6 @@ class HddSleep(ConfigListScreen,Screen,HelpableScreen):
 			os.system("echo %s >> %s" % (line_2,DEFAULT))
 			os.system("chmod 644 %s" % (DEFAULT))
 
-		except Exception, e:
+		except Exception as e:
 			print "[hddsleep] setParam FAIL:", e
 
