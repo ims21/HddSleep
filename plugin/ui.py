@@ -122,7 +122,7 @@ class HddSleep(ConfigListScreen,Screen,HelpableScreen):
 		try:    #some images does not using this value
 			self.epgpath = config.misc.epgcache_filename
 		except Exception as e:
-			print "your image does not using epg path"
+			print("your image does not using epg path")
 
 		self.devInfo = []
 		self.getDeviceInfo()
@@ -185,7 +185,7 @@ class HddSleep(ConfigListScreen,Screen,HelpableScreen):
 	def changedEntry(self):
 		self.setIcon(self.idx)
 		for x in self.onChangedEntry:
-			print x
+			print(x)
 			x()
 	# for summary (+ changedEntry):
 	def getCurrentEntry(self):
@@ -306,7 +306,7 @@ class HddSleep(ConfigListScreen,Screen,HelpableScreen):
 
 	def autoRun(self): 
 		os.system(SET_AUTORUN)
-		print "[hddsleep] created link for autorun"
+		print("[hddsleep] created link for autorun")
 
 	def getDaemonStatus(self):
 		os.system("pidof hd-idle > %s" % (TEMP))
@@ -321,7 +321,7 @@ class HddSleep(ConfigListScreen,Screen,HelpableScreen):
 				else:
 					return 1
 		except Exception as e:
-			print "[hddsleep] isRunning FAIL:", e
+			print("[hddsleep] isRunning FAIL:", e)
 			return 0
 
 	def runDaemon(self):
@@ -334,7 +334,7 @@ class HddSleep(ConfigListScreen,Screen,HelpableScreen):
 		return cmd
 
 	def run(self):
-		print "[hddsleep] start of hd-idle"
+		print("[hddsleep] start of hd-idle")
 		os.system(self.runDaemon())
 
 	def isAutorun(self): 
@@ -365,7 +365,7 @@ class HddSleep(ConfigListScreen,Screen,HelpableScreen):
 		return cmd
 
 	def stop(self):
-		print "[hddsleep] canceling of hd-idle"
+		print("[hddsleep] canceling of hd-idle")
 		os.system(self.stopDaemon())
 
 	def save(self):
@@ -404,7 +404,7 @@ class HddSleep(ConfigListScreen,Screen,HelpableScreen):
 		if cfg.logfile.value:
 			line_2 += " -l %s" % (LOG)
 		line_2 += "'\"'"
-		print line_2
+		print(line_2)
 		try:
 			#so much slow
 #			file = open(DEFAULT, "w")
@@ -415,5 +415,5 @@ class HddSleep(ConfigListScreen,Screen,HelpableScreen):
 			os.system("chmod 644 %s" % (DEFAULT))
 
 		except Exception as e:
-			print "[hddsleep] setParam FAIL:", e
+			print("[hddsleep] setParam FAIL:", e)
 
